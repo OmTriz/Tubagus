@@ -24,13 +24,13 @@ echo "2) Membuat User"
 echo "============================================"
 read x
 if test $x -eq 1; then
+	echo "Masukkan IP address vps anda:"
+	read ip
 	echo "Masukkan Username yang akan dibuat (eg. client1 or Tubagus):"
 	read u
-	echo "Masukkan Password untuk $u:"
+	echo "Buat Password untuk $u:"
 	read p
-
-# get the VPS IP
-ip=`ifconfig eth0 | grep 'inet addr' | awk {'print $2'} | sed s/.*://`
+	
 
 echo
 echo "===================================="
@@ -118,7 +118,7 @@ elif test $x -eq 2; then
 	read p
 
 # get the VPS IP
-ip=`ifconfig eth0 | grep 'inet addr' | awk {'print $2'} | sed s/.*://`
+ip=`hostname -I`
 
 # adding new user
 echo "$u	*	$p	*" >> /etc/ppp/chap-secrets
