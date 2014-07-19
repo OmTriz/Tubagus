@@ -26,7 +26,7 @@ read x
 if test $x -eq 1; then
 	echo "Masukkan Username yang akan dibuat (eg. client1 or Tubagus):"
 	read u
-	echo "Masukkan Password untuk $u:"
+	echo "Buat Password untuk $u:"
 	read p
 
 # get the VPS IP
@@ -114,7 +114,7 @@ echo "Script Edited By Tubagus Ismail"
 elif test $x -eq 2; then
 	echo "Masukan username yang akan di buat (Contoh : Tubagus, Ismail):"
 	read u
-	echo "Masukan Password nya:"
+	echo "Buat Password untuk $u:"
 	read p
 
 # get the VPS IP
