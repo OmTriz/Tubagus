@@ -28,7 +28,11 @@ if test $x -eq 1; then
 	read u
 	echo "Buat Password untuk $u:"
 	read p
-
+	echo "Masukkan Public DNS 1 dari http://public-dns.tk/ :"
+	read dns1
+	echo "Masukkan Public DNS 2 dari http://public-dns.tk/ :"
+	read dns2
+	
 # get the VPS IP
 ip=`ifconfig venet0:0 | grep 'inet addr' | awk {'print $2'} | sed s/.*://`
 
@@ -50,8 +54,6 @@ refuse-chap
 refuse-mschap
 require-mschap-v2
 require-mppe-128
-ms-dns 8.8.8.8
-ms-dns 8.8.4.4
 proxyarp
 nodefaultroute
 lock
@@ -66,6 +68,8 @@ echo "remoteip 10.1.0.1-100" >> /etc/pptpd.conf
 
 # adding new user
 echo "$u	*	$p	*" >> /etc/ppp/chap-secrets
+echo "ms-dns $dns1" >> /etc/ppp/pptpd-options
+echo "ms-dns $dns2" >> /etc/ppp/pptpd-options
 
 echo
 echo echo "===================================="
